@@ -4,7 +4,10 @@
 <button (click)="addNewProduct()" mat-icon-button aria-label="add icon">
     <mat-icon>add_box</mat-icon>
 </button>
-<button  [disabled]="!canEdit" (click)="editProduct()" mat-icon-button aria-label="add icon">
+<button  [disabled]="!canEditOrDelete" (click)="editProduct()" mat-icon-button aria-label="edit icon">
     <mat-icon>edit</mat-icon>
+</button>
+<button  [disabled]="!canEditOrDelete" (click)="deleteProduct()" mat-icon-button aria-label="delete icon">
+    <mat-icon>delete</mat-icon>
 </button>
 <app-products-data-table (selectedRowId)="selectedRowId($event)" [data]="data"></app-products-data-table>

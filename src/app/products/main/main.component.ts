@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material';
 import { LoadingComponent } from 'src/app/loading/loading.component';
 import { TableActionNewComponent } from '../table-action-new/table-action-new.component';
 import { TableActionEditComponent } from '../table-action-edit/table-action-edit.component';
+import { DialogComponent } from 'src/app/dialog/dialog.component';
 
 @Component({
   selector: 'app-main',
@@ -17,14 +18,14 @@ export class MainComponent implements OnInit {
   data: any;
 
   dialogRef;
-  canEdit = false;
+  canEditOrDelete = false;
 
   rowId;
 
   selectedRowId(event) {
     console.log(event);
     this.rowId = event;
-    this.canEdit = true;
+    this.canEditOrDelete = true;
   }
 
   ngOnInit() {
@@ -50,7 +51,24 @@ export class MainComponent implements OnInit {
 
   editProduct() {
     console.log(this.rowId);
-    this.dialog.open(TableActionEditComponent, { data: { id: this.rowId } });
+    const dialogTable = this.dialog.open(TableActionEditComponent, { data: { id: this.rowId } });
+    dialogTable.afterClosed().subscribe(res => {
+      this.dialogRef = this.dialog.open(LoadingComponent);
+      this.getProducts();
+    })
+  }
+
+  deleteProduct() {
+    const dialogComponent = this.dialog.open(DialogComponent,{data:
+      {dataToDisplay:"Are you sure you want to delete selected product?"}});
+    dialogComponent.afterClosed().subscribe(res => {
+      if (res === "true") {
+        this.dialogRef = this.dialog.open(LoadingComponent);
+        this.productsService.deleteProduct(this.rowId).subscribe(res => {
+          this.getProducts();
+        })
+      }
+    });
   }
 
 }

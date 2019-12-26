@@ -10,6 +10,6 @@ export class MessageDisplayerService {
   constructor(private snackBar: MatSnackBar) { }
 
   public displayMessage(message:string) {
-    this.snackBar.open(message,null,{duration: 1000});
+    this.snackBar.open(message,null,{duration: 5000});
   }
 }

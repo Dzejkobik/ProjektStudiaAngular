@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { Router } from '@angular/router';
@@ -14,7 +14,8 @@ import { LoadingComponent } from 'src/app/loading/loading.component';
 export class TableActionNewComponent implements OnInit {
 
   constructor(private categoriesService: CategoriesService,
-     private productService: ProductsService, private messageDisplayer: MessageDisplayerService, private dialog:MatDialog) { }
+     private productService: ProductsService, private messageDisplayer: MessageDisplayerService, private dialog:MatDialog,
+     private dialogRef:MatDialogRef<TableActionNewComponent>) { }
 
   categories;
   name;
@@ -35,6 +36,7 @@ export class TableActionNewComponent implements OnInit {
     this.productService.addNewProduct(this.name,this.price,this.quantity,this.selectedCategory).subscribe(res => {
       this.messageDisplayer.displayMessage("Product added");
       loadingRef.close();
+      this.dialogRef.close();
     })
   }
 

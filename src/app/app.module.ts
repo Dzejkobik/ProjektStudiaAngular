@@ -8,11 +8,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoadingComponent } from './loading/loading.component';
 import { MaterialModule } from './material-module/material/material.module';
 import { FormsModule } from '@angular/forms';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoadingComponent
+    LoadingComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { FormsModule } from '@angular/forms';
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
-    LoadingComponent
+    LoadingComponent,
+    DialogComponent
   ]
 })
 export class AppModule { }
