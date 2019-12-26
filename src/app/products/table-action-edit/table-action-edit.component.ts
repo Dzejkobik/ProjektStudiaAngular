@@ -4,6 +4,7 @@ import { ProductsService } from 'src/app/services/products.service';
 import { MessageDisplayerService } from 'src/app/services/message-displayer.service';
 import { MatDialog } from '@angular/material';
 import {MAT_DIALOG_DATA} from '@angular/material';
+import { LoadingComponent } from 'src/app/loading/loading.component';
 
 @Component({
   selector: 'app-table-action-edit',
@@ -22,6 +23,7 @@ export class TableActionEditComponent implements OnInit {
   selectedCategory;
 
   ngOnInit() {
+    const dialogRef = this.dialog.open(LoadingComponent);
     console.log(this.data);
     this.categoriesService.getAllCategories().subscribe(res => {
       this.categories = res;
@@ -32,6 +34,7 @@ export class TableActionEditComponent implements OnInit {
       this.name = res.productName;
       this.quantity = res.quantity;
       this.price = res.price;
+      dialogRef.close();
     })
   }
 
