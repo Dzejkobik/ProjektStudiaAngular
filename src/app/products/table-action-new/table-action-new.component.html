@@ -1,0 +1,36 @@
+<div class="header-div">
+    <h1 class="title is-1">Add new product</h1>
+</div>
+<div>
+    <div>
+        <mat-form-field>
+            <input [(ngModel)]="name" matInput placeholder="Name of product">
+          </mat-form-field>
+    </div>
+<div>
+    <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select [(ngModel)]="selectedCategory">
+          <mat-option *ngFor="let category of categories" [value]="category.id">
+            {{category.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+</div>
+<div>
+    <mat-form-field>
+        <input [(ngModel)]="quantity" min="1" type="number" matInput placeholder="Quantity">
+      </mat-form-field>
+</div>
+
+<div>
+    <mat-form-field>
+        <input [(ngModel)]="price" type="number" min="1" matInput placeholder="Price">
+      </mat-form-field>
+</div>
+
+<div>
+    <button (click)="submit()" mat-raised-button color="primary">Submit</button>
+</div>
+
+</div>
