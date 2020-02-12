@@ -1,24 +1,15 @@
-import { Component, OnInit, ViewChild, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-
-export interface Product {
-  Id: number,
-  ProductName: string;
-  CategoryName: string,
-  Price: number,
-  Quantity: number
-}
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { Product } from 'src/app/products/products-data-table/products-data-table.component';
 
 @Component({
-  selector: 'app-products-data-table',
-  templateUrl: './products-data-table.component.html',
-  styleUrls: ['./products-data-table.component.scss']
+  selector: 'app-locations-data-table',
+  templateUrl: './locations-data-table.component.html',
+  styleUrls: ['./locations-data-table.component.scss']
 })
-export class ProductsDataTableComponent implements OnInit, OnChanges {
+export class LocationsDataTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'categoryName', 'price', 'quantity'];
+  displayedColumns: string[] = ['locationId', 'streetAddress', 'postalCode', 'city', 'stateProvince','countryId'];
   dataSource: MatTableDataSource<Product>;
   @Input()
   data:any;

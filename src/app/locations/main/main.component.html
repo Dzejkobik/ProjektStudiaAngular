@@ -1,0 +1,13 @@
+<div class="header-div">
+    <h1 class="title is-1">Locations</h1>
+</div>
+<button (click)="addLocation()" mat-icon-button aria-label="add icon">
+    <mat-icon>add_box</mat-icon>
+</button>
+<button  [disabled]="!canEditOrDelete" (click)="editLocation()" mat-icon-button aria-label="edit icon">
+    <mat-icon>edit</mat-icon>
+</button>
+<button  [disabled]="!canEditOrDelete" (click)="deleteLocation()" mat-icon-button aria-label="delete icon">
+    <mat-icon>delete</mat-icon>
+</button>
+<app-locations-data-table (selectedRowId)="selectedRowId($event)" [data]="data"></app-locations-data-table>

@@ -32,7 +32,7 @@ export class TableActionEditComponent implements OnInit {
     this.productService.getProductById(this.data.id).subscribe(res => {
       console.log(res);
       this.selectedCategory = res.categoryId;
-      this.name = res.productName;
+      this.name = res.name;
       this.quantity = res.quantity;
       this.price = res.price;
       dialogRef.close();
