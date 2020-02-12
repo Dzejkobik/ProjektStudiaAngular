@@ -1,0 +1,15 @@
+<div class="header-div">
+    <h1 class="title is-1">Categories</h1>
+</div>
+<button (click)="addNewCategory()" mat-icon-button aria-label="add icon">
+    <mat-icon>add_box</mat-icon>
+</button>
+<button  [disabled]="!canEditOrDelete" (click)="editCategory()" mat-icon-button aria-label="edit icon">
+    <mat-icon>edit</mat-icon>
+</button>
+<button  [disabled]="!canEditOrDelete" (click)="deleteCategory()" mat-icon-button aria-label="delete icon">
+    <mat-icon>delete</mat-icon>
+</button>
+<app-category-data-table (selectedRowId)="selectedRowId($event)" [data]="data"></app-category-data-table>
+
+<p class="hrefStyle" routerLink="/products/main">Go to products...</p>
